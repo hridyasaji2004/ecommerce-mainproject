@@ -29,7 +29,19 @@
                     <h4 class="mt-2">{% if product.stock > 0 %}Currently <b>{{product.stock}}</b> available{% endif %}</h4>
                     <h3 class="mt-2"><b>Short Description</b></h3>
                     <p style="text-align:justify;height:2.5;">{{product.description}}</p>
-					<a class="btn hvr-hover" href="#">Add to Cart</a>
+
+                    {% if user.is_superuser == True %}
+                                <a class="btn hvr-hover" href="{% url 'shop:addstock' product.id %}">Add Stock</a>
+                    {% else %}
+                              {% if product.stock > 0 %}
+					            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                              {% else %}
+					             <h3>Out Of Stock</h3>
+                              {% endif %}
+                    {% endif %}
+
+
+
                 </div>
             </div>
         </div>
