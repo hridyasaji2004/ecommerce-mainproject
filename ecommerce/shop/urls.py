@@ -21,4 +21,9 @@ app_name="shop"
 urlpatterns = [
     path('',views.Categoryview.as_view(),name="categories"),
     path('products/<int:i>', views.Productview.as_view(), name="products"),
+    path('productdetail/<int:i>', views.ProductDetailView.as_view(), name="productdetail"),
+    path('register', views.RegisterView.as_view(), name="register"),
+    path('login', views.UserloginView.as_view(), name="login"),
+    path('logout', views.UserlogoutView.as_view(), name="logout"),
+
 ]
